@@ -1306,8 +1306,19 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   .plan__x { font-size: 28px; }
   .plan__valor { font-size: 56px; }
   .plan__vista { font-size: 19px; }
-  .plan__list { padding: 0; width: max-content; max-width: 100%; margin: 20px auto 0; }
-  .plan__list li { font-size: 14px; min-height: 30px; white-space: normal; }
+  .plan__list {
+    width: auto;
+    max-width: none;
+    padding: 0 20px 0 46px;
+    margin: 20px 0 0;
+  }
+  .plan__list li {
+    font-size: 14px;
+    min-height: 32px;
+    white-space: normal;
+    align-items: center;
+    gap: 12px;
+  }
   .plan__list li br { display: none; }
   .plan__list li img { width: 19px; height: 14px; }
   .plan__btn {
