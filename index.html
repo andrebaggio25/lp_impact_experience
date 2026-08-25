@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IMPACTXPERIENCE — Chega de decidir sozinho | São Paulo, 21 de Outubro</title>
+  <meta name="description" content="Um dia com 120 empresários que vivem o seu momento. Conexões que viram negócio, não crachá parado no canto. 21 de Outubro, Jlab Alphaville.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Archivo:ital,wght@0,100..900;1,100..900&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Lexend:wght@300;400;500&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Favicon (X dourado do logo) -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/img/favicon-512.png">
+  <link rel="apple-touch-icon" href="assets/img/favicon-180.png">
+  <meta name="theme-color" content="#02023d">
+
+  <!-- ============================================================
+       META PIXEL — cole o ID no lugar de SEU_PIXEL_ID e remova os
+       comentários <!== ==> do bloco abaixo para ativar.
+       Os botões já disparam os eventos automaticamente quando o
+       pixel está ativo (ver js/main.js):
+         - "Quero garantir por R$187"  -> InitiateCheckout
+         - "Falar com suporte!"        -> Contact
+         - "Avisar quando abrir"       -> Lead
+       ============================================================ -->
+  <!--
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'SEU_PIXEL_ID');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=SEU_PIXEL_ID&ev=PageView&noscript=1"
+  /></noscript>
+  -->
+
+  <!-- ============================================================
+       GOOGLE TAG (GA4 / Google Ads) — opcional: cole o ID no lugar
+       de G-XXXXXXX e remova os comentários para ativar.
+       ============================================================ -->
+  <!--
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXX');
+  </script>
+  -->
+</head>
+<body>
+
+  <!-- ===== HEADER FIXO (escalado junto com o canvas) ===== -->
+  <header class="fixo" id="fixo">
+    <div class="fixo__container">
+      <div class="fixo__left">
+        <a class="fixo__logo" href="#top" data-scroll="0" aria-label="IMPACTXPERIENCE">
+          <img src="assets/img/logo-impact.png" alt="IMPACTXPERIENCE">
+        </a>
+        <nav class="fixo__links">
+          <p>São Paulo</p>
+          <p>21 de outubro</p>
+          <p>Jlab, Alphaville</p>
+        </nav>
+      </div>
+      <a class="fixo__cta" href="#oferta" data-scroll="4553">Garantir minha vaga</a>
+    </div>
+  </header>
+
+  <div class="viewport" id="viewport">
+    <div class="stage" id="stage">
+
+      <!-- ============================ HERO (0–878) ============================ -->
+      <section class="hero" id="top">
+        <div class="hero__crowd"><img src="assets/img/hero-bg-crowd.jpg" alt=""></div>
+
+        <!-- Diamante decorativo + feixes de luz -->
+        <div class="hero__deco">
+          <div class="hero__diamond"><img src="assets/img/hero-deco-diamond.png" alt=""></div>
+          <div class="beam beam--1"><div class="beam__rot"><div class="beam__img"><img src="assets/img/hero-beam.png" alt=""><div class="beam__hue"></div><div class="beam__mask"></div></div></div></div>
+          <div class="beam beam--2"><div class="beam__rot"><div class="beam__img"><img src="assets/img/hero-beam.png" alt=""><div class="beam__hue"></div><div class="beam__mask"></div></div></div></div>
+          <div class="beam beam--3"><div class="beam__rot"><div class="beam__img"><img src="assets/img/hero-beam.png" alt=""><div class="beam__hue"></div><div class="beam__mask"></div></div></div></div>
+          <div class="beam beam--4"><div class="beam__rot"><div class="beam__img"><img src="assets/img/hero-beam.png" alt=""><div class="beam__hue"></div><div class="beam__mask"></div></div></div></div>
+        </div>
+
+        <!-- Aurora superior direita -->
+        <div class="aurora" style="left:1743px;top:-385px;"><img class="aurora__a" src="assets/svg/ellipse7.svg" alt=""><img class="aurora__b" src="assets/svg/ellipse8.svg" alt=""></div>
+
+        <!-- Fotos das fundadoras -->
+        <div class="hero__founders">
+          <img class="hero__founder hero__founder--left"   src="assets/img/founder-left.png"   alt="Fundadora do IMPACTXPERIENCE">
+          <img class="hero__founder hero__founder--right"  src="assets/img/founder-right.png"  alt="Fundadora do IMPACTXPERIENCE">
+          <img class="hero__founder hero__founder--center" src="assets/img/founder-center.png" alt="Fundadora do IMPACTXPERIENCE">
+        </div>
+
+        <!-- Fades para o fundo -->
+        <div class="hero__fade hero__fade--b1"></div>
+        <div class="hero__fade hero__fade--b2"></div>
+        <div class="hero__fade hero__fade--l"></div>
+        <div class="hero__fade hero__fade--r"></div>
+
+        <!-- Aurora esquerda -->
+        <div class="aurora" style="left:-709px;top:168px;"><img class="aurora__a" src="assets/svg/ellipse7.svg" alt=""><img class="aurora__b" src="assets/svg/ellipse8.svg" alt=""></div>
+
+        <!-- Conteúdo -->
+        <div class="hero__content">
+          <div class="hero__headline">
+            <p class="hero__kicker gold-text">Chega de</p>
+            <p class="hero__title gold-text">decidir sozinho.</p>
+            <p class="hero__sub">Um dia com <strong>120 empresários</strong> que vivem o <br>seu momento. <strong>Conexões que viram <br>negócio</strong>, não crachá parado no canto.</p>
+          </div>
+
+          <div class="hero__badges">
+            <div class="hero__badge hero__badge--1">
+              <p><span class="t-red">Vagas limitadas</span> a 120 pessoas <br>· <span class="t-green">1º lote por R$ 197</span></p>
+            </div>
+            <div class="hero__badge hero__badge--2">
+              <img src="assets/svg/map-pin.svg" alt="">
+              <p>Al. Rio Negro, 500 - Torre A 14º Andar - Sala 1414 - Alphaville Industrial, Barueri - SP, 06454-000</p>
+            </div>
+            <div class="hero__badge hero__badge--3">
+              <img src="assets/svg/calendar.svg" alt="">
+              <p>21 de Outubro de 2026 - <br>Das 09:00 as 19:00.</p>
+            </div>
+          </div>
+
+          <a class="btn-gold btn-gold--white hero__cta" href="#oferta" data-scroll="4553">Garantir minha vaga <img src="assets/svg/arrow-white.svg" alt=""></a>
+        </div>
+
+        <!-- Faixa marquee -->
+        <div class="marquee">
+          <div class="marquee__track">
+            <!-- unidades duplicadas via JS -->
+            <img src="assets/svg/marquee-logo.svg" alt="">
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== DORES (868–1785) ==================== -->
+      <section class="dores">
+        <!-- vetores diagonais laterais -->
+        <svg class="dores__lines dores__lines--l" width="377" height="903" viewBox="0 0 377 903" fill="none">
+          <path d="M377 0 L-252 903" stroke="url(#dlg1)" stroke-width="1.5"/>
+          <path d="M303 -60 L-326 843" stroke="url(#dlg1)" stroke-width="1.5"/>
+          <defs><linearGradient id="dlg1" x1="0" y1="0" x2="377" y2="903" gradientUnits="userSpaceOnUse"><stop stop-color="#C9A96E" stop-opacity=".85"/><stop offset="1" stop-color="#E8D5B0" stop-opacity=".5"/></linearGradient></defs>
+        </svg>
+        <svg class="dores__lines dores__lines--r" width="251" height="903" viewBox="0 0 251 903" fill="none">
+          <path d="M-126 0 L503 903" stroke="url(#dlg2)" stroke-width="1.5"/>
+          <path d="M-52 -60 L577 843" stroke="url(#dlg2)" stroke-width="1.5"/>
+          <defs><linearGradient id="dlg2" x1="251" y1="0" x2="-126" y2="903" gradientUnits="userSpaceOnUse"><stop stop-color="#C9A96E" stop-opacity=".85"/><stop offset="1" stop-color="#E8D5B0" stop-opacity=".5"/></linearGradient></defs>
+        </svg>
+
+        <div class="dores__col" style="left:376px;width:280px;">
+          <img class="dores__x" src="assets/svg/x-icon.svg" alt="">
+          <p>Decide, resolve e comemora sozinho, e cada decisão <br>pesa o dobro por isso.</p>
+        </div>
+        <div class="dores__col" style="left:864px;width:240px;">
+          <img class="dores__x" src="assets/svg/x-icon.svg" alt="">
+          <p>Fatura cada vez mais, mas o dinheiro não sobra no fim do mês.</p>
+        </div>
+        <div class="dores__col" style="left:1312px;width:280px;">
+          <img class="dores__x" src="assets/svg/x-icon.svg" alt="">
+          <p>Estacionou num patamar e não sabe qual é o próximo passo real.</p>
+        </div>
+      </section>
+
+      <!-- ============ DE SOZINHO PRA CONECTADO (1118–1785) ============ -->
+      <section class="conectado">
+        <!-- foto da mulher (círculo mascarado) -->
+        <div class="conectado__photo">
+          <img src="assets/img/woman-circle.jpg" alt="Empresária sorrindo durante o evento">
+          <div class="conectado__photo-tint"></div>
+        </div>
+
+        <div class="conectado__text">
+          <h2 class="conectado__h2">De sozinho pra <span class="gold-text conectado__h2b">conectado, em um dia.</span></h2>
+          <p class="conectado__lead">Não é o primeiro. É o mais seletivo.</p>
+        </div>
+
+        <div class="conectado__pill" style="top:1374px;"><p class="gold-text">3 — Edições realizadas no Sul do Brasil</p></div>
+        <div class="conectado__pill" style="top:1430px;"><p class="gold-text">400 — Empresárias já impactadas</p></div>
+        <div class="conectado__pill" style="top:1486px;"><p class="gold-text">120 — Vagas nesta edição — São Paulo</p></div>
+
+        <a class="btn-gold conectado__cta" href="#oferta" data-scroll="4553">Garantir minha vaga <img src="assets/svg/arrow-btn.svg" alt=""></a>
+
+        <!-- aurora central (sliver acima da seção clara) -->
+        <div class="aurora" style="left:554px;top:1727px;"><img class="aurora__a" src="assets/svg/ellipse7.svg" alt=""><img class="aurora__b" src="assets/svg/ellipse8.svg" alt=""></div>
+      </section>
+
+      <!-- ============ O QUE VOCÊ LEVA PRA CASA (1785–2525) ============ -->
+      <section class="leva">
+        <div class="leva__bg"></div>
+        <img class="divider divider--up" style="top:1785px;" src="assets/svg/divider-gold-top.svg" alt="">
+        <h2 class="leva__h2">O que você leva pra casa</h2>
+        <p class="leva__sub">Conteúdo que destrava, não que só inspira. <br><em>Ensinado por quem viveu, inclusive as fundadoras do evento <br>totalizando <strong>10 palestrantes durante o dia.</strong></em></p>
+
+        <!-- linha 1 -->
+        <div class="leva__card" style="left:352px;top:2012px;"></div>
+        <div class="leva__card" style="left:658px;top:2012px;"></div>
+        <div class="leva__card" style="left:965px;top:2012px;"></div>
+        <div class="leva__card" style="left:1271px;top:2012px;"></div>
+        <div class="leva__cardtx" style="left:360px;top:2037px;">
+          <p class="leva__t gold-text">Bastidores da excelência</p>
+          <p class="leva__d">O que ninguém mostra do sucesso, processo, erro, ajuste.</p>
+        </div>
+        <div class="leva__cardtx" style="left:666px;top:2051px;">
+          <p class="leva__t gold-text">Posicionamento</p>
+          <p class="leva__d">Ser referência não é sorte, <br>é estratégia de exposição correta.</p>
+        </div>
+        <div class="leva__cardtx" style="left:973px;top:2054px;">
+          <p class="leva__t gold-text">Mentalidade <br>de crescimento</p>
+          <p class="leva__d">O que separa quem cresce de quem se acomoda.</p>
+        </div>
+        <div class="leva__cardtx" style="left:1279px;top:2054px;">
+          <p class="leva__t gold-text">Cultura <br>que sustenta</p>
+          <p class="leva__d">Empresa que lucra sem depender só do dono.</p>
+        </div>
+
+        <!-- linha 2 -->
+        <div class="leva__card" style="left:352px;top:2239px;"></div>
+        <div class="leva__card" style="left:658px;top:2239px;"></div>
+        <div class="leva__card" style="left:965px;top:2239px;"></div>
+        <div class="leva__card" style="left:1271px;top:2239px;"></div>
+        <div class="leva__cardtx" style="left:363px;top:2270px;">
+          <p class="leva__t gold-text">Dinâmicas de <br>networking</p>
+          <p class="leva__d">Estruturadas para gerar conexão real, não há crachá parado no canto.</p>
+        </div>
+        <div class="leva__cardtx" style="left:669px;top:2272px;">
+          <p class="leva__t gold-text">A rede que sustenta <br>a jornada</p>
+          <p class="leva__d">O resultado de 2026 nasce das conexões que você fizer agora.</p>
+        </div>
+        <div class="leva__cardtx" style="left:976px;top:2281px;">
+          <p class="leva__t gold-text">Reforma tributária <br>na prática</p>
+          <p class="leva__d">O que muda pra quem tem PME, direto ao ponto.</p>
+        </div>
+        <div class="leva__cardtx" style="left:1279px;top:2281px;">
+          <p class="leva__t gold-text">Empresas <br>que lucram</p>
+          <p class="leva__d">Dinheiro que sobra, não só fatura que cresce no papel.</p>
+        </div>
+
+        <img class="divider" style="top:2525px;" src="assets/svg/divider-gold-bottom.svg" alt="">
+      </section>
+
+      <!-- ============ QUEM JÁ CONFIOU (2525–3262) ============ -->
+      <section class="social">
+        <div class="social__glow"></div>
+        <div class="band band--social"><div class="band__logos"></div></div>
+
+        <div class="social__head">
+          <div class="social__stars">
+            <img src="assets/svg/star.svg" alt=""><img src="assets/svg/star.svg" alt=""><img src="assets/svg/star-half.svg" alt="★"><img src="assets/svg/star.svg" alt=""><img src="assets/svg/star.svg" alt="">
+          </div>
+          <h2 class="social__h2">Quem já confiou <br><span class="gold-text">no Impactxperience</span></h2>
+        </div>
+
+        <div class="social__carousel" id="carousel">
+          <img class="social__video" src="assets/svg/video-card-1.svg" alt="Depoimento em vídeo 1">
+          <img class="social__video" src="assets/svg/video-card-2.svg" alt="Depoimento em vídeo 2">
+          <img class="social__video" src="assets/svg/video-card-3.svg" alt="Depoimento em vídeo 3">
+        </div>
+        <button class="social__arrow social__arrow--l" id="car-prev" aria-label="Anterior"><img src="assets/svg/chevron-left.svg" alt=""></button>
+        <button class="social__arrow social__arrow--r" id="car-next" aria-label="Próximo"><img src="assets/svg/chevron-right.svg" alt=""></button>
+
+        <a class="btn-gold social__cta" href="#oferta" data-scroll="4553">Garantir minha vaga <img src="assets/svg/arrow-btn.svg" alt=""></a>
+      </section>
+
+      <!-- ============ COMO FUNCIONA O DIA (3082–4796) ============ -->
+      <section class="dia">
+        <div class="dia__ribbon dia__ribbon--top"><img src="assets/svg/ribbon-1.svg" alt=""></div>
+        <div class="dia__base"></div>
+        <div class="dia__ribbon dia__ribbon--bottom"><img src="assets/svg/ribbon-2.svg" alt=""></div>
+
+        <div class="dia__photo">
+          <img src="assets/img/toast-photo.jpg" alt="Empresárias brindando no evento">
+          <div class="dia__photo-tint"></div>
+        </div>
+
+        <div class="dia__head">
+          <h2>Como funciona o dia</h2>
+          <p>Um dia inteiro, sem tempo morto.</p>
+        </div>
+
+        <div class="dia__card" style="top:3363px;">
+          <img class="dia__icon" src="assets/svg/verified-group.svg" alt="">
+          <div class="dia__cardtx">
+            <p class="dia__cardtitle">Manhã: Abertura + <br>talks principais</p>
+            <p class="dia__cardbody">Recepção, boas-vindas e os primeiros talks do dia sobre bastidores, posicionamento e mentalidade.</p>
+          </div>
+        </div>
+        <div class="dia__card" style="top:3686px;">
+          <img class="dia__icon" src="assets/svg/verified-group.svg" alt="">
+          <div class="dia__cardtx">
+            <p class="dia__cardtitle">Tarde: Dinâmicas + talks de aprofundamento</p>
+            <p class="dia__cardbody">Atividades práticas de conexão intercaladas com talks sobre cultura, lucro e tributário.</p>
+          </div>
+        </div>
+        <div class="dia__card" style="top:4009px;">
+          <img class="dia__icon" src="assets/svg/verified-group.svg" alt="">
+          <div class="dia__cardtx">
+            <p class="dia__cardtitle">Encerramento: <br>Roda de networking</p>
+            <p class="dia__cardbody">O momento que mais gera conexão real, testado e aprovado nas 3 edições do Sul.</p>
+          </div>
+        </div>
+
+        <a class="btn-gold dia__cta" href="#oferta" data-scroll="4553">Quero Participar <img src="assets/svg/arrow-btn.svg" alt=""></a>
+      </section>
+
+      <!-- ============ OFERTA (4653–6004) ============ -->
+      <section class="oferta" id="oferta">
+        <div class="aurora" style="left:-407px;top:3912px;"><img class="aurora__a" src="assets/svg/ellipse7.svg" alt=""><img class="aurora__b" src="assets/svg/ellipse8.svg" alt=""></div>
+        <div class="aurora" style="left:1516px;top:4500px;"><img class="aurora__a" src="assets/svg/ellipse7.svg" alt=""><img class="aurora__b" src="assets/svg/ellipse8.svg" alt=""></div>
+        <div class="band band--x1"><div class="band__logos"></div></div>
+        <div class="band band--x2"><div class="band__logos"></div></div>
+
+        <div class="oferta__titles">
+          <h2>Garanta sua vaga | <span class="gold-text">120 vagas. Sem exceção.</span></h2>
+          <p>Mesmas 120 vagas, preço mais baixo agora.</p>
+        </div>
+
+        <div class="countdown">
+          <p class="countdown__label"><strong>Primeiro Lote</strong> encerra em:</p>
+          <div class="countdown__timer" id="countdown">
+            <div class="countdown__unit"><p class="countdown__num" id="cd-d">07</p><p class="countdown__cap">dias</p></div>
+            <img class="countdown__dot" src="assets/svg/dot-red.svg" alt="">
+            <div class="countdown__unit" style="width:68.85px;"><p class="countdown__num" id="cd-h">14</p><p class="countdown__cap">horas</p></div>
+            <img class="countdown__dot" src="assets/svg/dot-red.svg" alt="">
+            <div class="countdown__unit"><p class="countdown__num" id="cd-m">20</p><p class="countdown__cap">minutos</p></div>
+            <img class="countdown__dot" src="assets/svg/dot-red.svg" alt="">
+            <div class="countdown__unit"><p class="countdown__num" id="cd-s">00</p><p class="countdown__cap">segundos</p></div>
+          </div>
+        </div>
+
+        <!-- Card 1º lote -->
+        <div class="plan plan--1">
+          <p class="plan__lote"><strong>Primeiro Lote</strong> <span class="gold-text">[Disponível agora]</span></p>
+          <div class="plan__logo"><img src="assets/img/logo-impact.png" alt="IMPACTXPERIENCE"></div>
+          <div class="plan__price">
+            <p class="plan__de">De <s>R$497,00</s> por:</p>
+            <p class="plan__x">12x de</p>
+            <p class="plan__valor gold-text">R$18,78</p>
+            <p class="plan__vista">à vista: R$187,00</p>
+          </div>
+          <ul class="plan__list">
+            <li><img src="assets/svg/check-gold.svg" alt="">Acesso ao dia inteiro do evento</li>
+            <li><img src="assets/svg/check-gold.svg" alt="">Todos os talks e dinâmicas</li>
+            <li><img src="assets/svg/check-gold.svg" alt="">Roda de networking + <br>coquetel de encerramento</li>
+            <li><img src="assets/svg/check-gold.svg" alt="">Material de apoio do evento</li>
+          </ul>
+          <a class="plan__btn plan__btn--gold" href="#" id="checkout">Quero garantir por R$187</a>
+          <p class="plan__secure"><img src="assets/svg/logo-kiwify.svg" alt="Kiwify"> | Compra segura</p>
+        </div>
+
+        <!-- Card 2º lote -->
+        <div class="plan plan--2">
+          <p class="plan__lote t-red"><strong>Segundo Lote</strong></p>
+          <div class="plan__logo"><img src="assets/img/logo-impact.png" alt="IMPACTXPERIENCE"></div>
+          <div class="plan__price">
+            <p class="plan__de t-red">De <s>R$497,00</s> por:</p>
+            <p class="plan__x">12x de</p>
+            <p class="plan__valor plan__valor--w">R$29,82</p>
+            <p class="plan__vista">à vista: R$ 397,00</p>
+          </div>
+          <ul class="plan__list">
+            <li><img src="assets/svg/check-white.svg" alt="">Acesso ao dia inteiro do evento</li>
+            <li><img src="assets/svg/check-white.svg" alt="">Todos os talks e dinâmicas</li>
+            <li><img src="assets/svg/check-white.svg" alt="">Roda de networking + <br>coquetel de encerramento</li>
+            <li><img src="assets/svg/check-white.svg" alt="">Material de apoio do evento</li>
+          </ul>
+          <a class="plan__btn plan__btn--red" href="#">Avisar quando abrir 🔒</a>
+          <p class="plan__secure"><img src="assets/svg/logo-kiwify.svg" alt="Kiwify"> | Compra segura</p>
+        </div>
+      </section>
+
+      <!-- ============ GARANTIA + FAQ + CTA (5979–7920) ============ -->
+      <section class="claro">
+        <img class="divider divider--up" style="top:5979px;" src="assets/svg/divider-gold-top.svg" alt="">
+        <div class="claro__bg"></div>
+
+        <!-- Garantia -->
+        <div class="garantia">
+          <img class="garantia__pattern" src="assets/svg/garantia-bg.svg" alt="">
+          <div class="garantia__head">
+            <span class="garantia__pill">SOBRE A GARANTIA</span>
+            <p class="garantia__title">Não se preocupe você está seguro!</p>
+          </div>
+          <img class="garantia__seal" src="assets/svg/icon-7d.svg" alt="7 dias de garantia">
+          <p class="garantia__text">Caso você se arrependa da compra do ingresso, <strong>receba 100% do seu dinheiro de volta, cada centavo que você investiu, sem precisar me explicar o porquê. Você tem 7 dias de garantia.</strong></p>
+          <a class="btn-gold garantia__cta" href="#oferta" data-scroll="4553">Garantir minha vaga <img src="assets/svg/arrow-garantia.svg" alt=""></a>
+        </div>
+
+        <!-- FAQ -->
+        <div class="faq">
+          <img class="faq__qmark" src="assets/svg/question-mark.svg" alt="">
+          <p class="faq__title">Antes de garantir sua vaga.</p>
+          <p class="faq__desc">Aqui estão algumas perguntas frequentes. Caso ainda tenha dúvida, chame nosso suporte!</p>
+          <a class="faq__suporte" href="#" id="suporte">Falar com suporte!</a>
+
+          <div class="faq__list" id="faq-list">
+            <div class="faq__item is-open">
+              <button class="faq__q" aria-expanded="true">Pra quem é o Impactxperience?<span class="faq__icon"></span></button>
+              <div class="faq__a"><p>Donos de PME e empreendedores individuais faturando de R$500 mil <br>a R$50 milhões/ano que querem sair da solidão do negócio.</p></div>
+            </div>
+            <div class="faq__item">
+              <button class="faq__q" aria-expanded="false">O que está incluso no ingresso?<span class="faq__icon"></span></button>
+              <div class="faq__a"><p>Acesso ao dia inteiro do evento, todos os talks e dinâmicas, roda de networking + coquetel de encerramento e material de apoio.</p></div>
+            </div>
+            <div class="faq__item">
+              <button class="faq__q" aria-expanded="false">Onde fica o Jlab?<span class="faq__icon"></span></button>
+              <div class="faq__a"><p>Al. Rio Negro, 500 - Torre A 14º Andar - Sala 1414 - Alphaville Industrial, Barueri - SP, 06454-000.</p></div>
+            </div>
+            <div class="faq__item">
+              <button class="faq__q" aria-expanded="false">Por que só 120 vagas e o preço sobe no 2º lote?<span class="faq__icon"></span></button>
+              <div class="faq__a"><p>O formato é seletivo de propósito: 120 pessoas é o limite para gerar conexão real. O 1º lote premia quem decide cedo — quando esgotar, o valor sobe.</p></div>
+            </div>
+            <div class="faq__item">
+              <button class="faq__q" aria-expanded="false">Formas de pagamento?<span class="faq__icon"></span></button>
+              <div class="faq__a"><p>Cartão de crédito em até 12x ou à vista via Pix, com checkout seguro pela Kiwify.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA final -->
+        <div class="ctafinal">
+          <p class="ctafinal__h1"><strong>Vem construir sua rede.</strong> <br>21 de Outubro, Jlab Alphaville. 120 vagas. O próximo passo do seu negócio pode nascer numa conversa desse dia.</p>
+          <a class="btn-gold ctafinal__btn" href="#oferta" data-scroll="4553">Garantir minha vaga por R$187 <img src="assets/svg/arrow-cta-final.svg" alt=""></a>
+        </div>
+      </section>
+
+      <!-- ============ FOOTER (7895–8181) ============ -->
+      <footer class="footer">
+        <img class="divider" style="top:7895px;" src="assets/svg/divider-gold-bottom.svg" alt="">
+        <img class="footer__line" src="assets/svg/footer-line.svg" alt="">
+        <div class="footer__row">
+          <p class="footer__copy">© Copyright 2026. Todos os direitos reservados.</p>
+          <p class="footer__terms">Politicas de privacidade | Termos de uso</p>
+          <div class="footer__designed">
+            <p>Designed by</p>
+            <div class="footer__origin"><img src="assets/img/logo-origin.png" alt="Origin Company"></div>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
