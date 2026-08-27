@@ -118,3 +118,31 @@ if (suporte) suporte.addEventListener('click', () => pixelTrack('Contact'));
 const avisar = document.querySelector('.plan__btn--red');
 if (avisar) avisar.addEventListener('click', () =>
   pixelTrack('Lead', { content_name: 'Avisar quando abrir - Segundo Lote' }));
+
+// --- Carrossel de palestrantes ---------------------------------------------
+const spkViewport = document.getElementById('spk-viewport');
+if (spkViewport) {
+  const step = () => {
+    const card = spkViewport.querySelector('.spk');
+    return card ? card.offsetWidth + 11 : 324; // offsetWidth ignora o scale do canvas
+  };
+  const scrollSpk = (dir) => {
+    const max = spkViewport.scrollWidth - spkViewport.clientWidth;
+    let next = spkViewport.scrollLeft + dir * step();
+    if (next > max + 1) next = 0;            // volta ao início no fim
+    if (next < -1) next = max;               // vai ao fim se voltar do início
+    spkViewport.scrollTo({ left: next, behavior: 'smooth' });
+  };
+  document.getElementById('spk-prev').addEventListener('click', () => scrollSpk(-1));
+  document.getElementById('spk-next').addEventListener('click', () => scrollSpk(1));
+
+  // autoplay suave (pausa no hover/toque; respeita reduced-motion)
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    let paused = false;
+    ['mouseenter', 'touchstart', 'pointerdown'].forEach((ev) =>
+      spkViewport.addEventListener(ev, () => { paused = true; }, { passive: true }));
+    ['mouseleave', 'touchend'].forEach((ev) =>
+      spkViewport.addEventListener(ev, () => { paused = false; }, { passive: true }));
+    setInterval(() => { if (!paused && document.visibilityState === 'visible') scrollSpk(1); }, 4000);
+  }
+}

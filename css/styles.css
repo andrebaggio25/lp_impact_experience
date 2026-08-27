@@ -38,7 +38,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
 .stage {
   position: relative;
   width: 1920px;
-  height: 8181px;
+  height: 9091px;
   background: var(--navy);
   transform-origin: 0 0;
 }
@@ -127,14 +127,14 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
 }
 .band--x1 {
   width: 2400px; height: 140px;
-  left: -240px; top: 5390px;
+  left: -240px; top: 6300px;
   transform: rotate(21deg);
   filter: blur(1.6px);
   z-index: 1;
 }
 .band--x2 {
   width: 2400px; height: 140px;
-  left: -240px; top: 5390px;
+  left: -240px; top: 6300px;
   transform: rotate(-21deg);
   filter: blur(1.6px);
   z-index: 1;
@@ -628,7 +628,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
 .oferta { position: absolute; left: 0; top: 0; width: 1920px; z-index: 2; }
 .oferta__titles {
   position: absolute;
-  left: 565px; top: 4653px;
+  left: 565px; top: 5563px;
   width: 835px;
   display: flex;
   flex-direction: column;
@@ -650,7 +650,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
 
 .countdown {
   position: absolute;
-  left: 960.4px; top: 4849px;
+  left: 960.4px; top: 5759px;
   transform: translateX(-50%);
   display: flex;
   flex-direction: column;
@@ -672,7 +672,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
 
 .plan {
   position: absolute;
-  top: 5066px;
+  top: 5976px;
   width: 530px; height: 842px;
   border-radius: 30px;
   z-index: 2;
@@ -768,14 +768,14 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
 .claro { position: absolute; left: 0; top: 0; width: 1920px; z-index: 5; }
 .claro__bg {
   position: absolute;
-  left: 0; top: 6004px;
+  left: 0; top: 6914px;
   width: 1920px; height: 1894px;
   background: var(--light);
 }
 
 .garantia {
   position: absolute;
-  left: 0; top: 6018px;
+  left: 0; top: 6928px;
   width: 1920px; height: 561px;
   overflow: hidden;
 }
@@ -821,7 +821,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
 .garantia__text strong { font-weight: 500; }
 .garantia__cta { left: 960px; top: 374px; }
 
-.faq { position: absolute; left: 0; top: 6626px; width: 1920px; }
+.faq { position: absolute; left: 0; top: 7536px; width: 1920px; }
 .faq__qmark { position: absolute; left: 351px; top: 34px; width: 17px; height: 35px; }
 .faq__title {
   position: absolute;
@@ -900,7 +900,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
 
 .ctafinal {
   position: absolute;
-  left: 960.4px; top: 7433px;
+  left: 960.4px; top: 8343px;
   transform: translateX(-50%);
   display: flex;
   flex-direction: column;
@@ -923,18 +923,18 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
 .footer::before {
   content: '';
   position: absolute;
-  left: 0; top: 7898px;
+  left: 0; top: 8808px;
   width: 1920px; height: 283px;
   background: var(--navy-deep);
 }
 .footer__line {
   position: absolute;
-  left: 223px; top: 8008px;
+  left: 223px; top: 8918px;
   width: 1474.5px; height: 1px;
 }
 .footer__row {
   position: absolute;
-  left: 223px; top: 8043px;
+  left: 223px; top: 8953px;
   width: 1474.5px;
   display: flex;
   align-items: center;
@@ -1396,4 +1396,178 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   .footer__copy, .footer__terms { font-size: 12.5px; white-space: normal; text-align: center; }
   .footer__designed p { font-size: 14px; }
   .footer__origin { width: 160px; height: 16px; }
+}
+
+/* ==========================================================================
+   PALESTRANTES CONFIRMADOS (4800–5620) — carrossel de 13 cards 313×551
+   ========================================================================== */
+.palestrantes {
+  position: absolute;
+  left: 0; top: 4800px;
+  width: 1920px; height: 760px;
+  z-index: 4;
+}
+.palestrantes::before {
+  content: '';
+  position: absolute;
+  left: 0; top: -60px;
+  width: 1920px; height: 880px;
+  background: radial-gradient(60% 55% at 50% 55%, rgba(6,67,253,.28) 0%, rgba(2,2,61,0) 72%);
+  pointer-events: none;
+}
+.palestrantes__h2 {
+  position: absolute;
+  left: 0; top: 30px;
+  width: 1920px;
+  font: 600 48px/1.1 var(--f-clash);
+  text-transform: uppercase;
+  text-align: center;
+  color: #fff;
+}
+.palestrantes__viewport {
+  position: absolute;
+  left: 0; top: 140px;
+  width: 1920px; height: 571px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.palestrantes__viewport::-webkit-scrollbar { display: none; }
+.palestrantes__track {
+  display: flex;
+  gap: 11px;
+  width: max-content;
+  padding: 10px 160px;
+}
+.palestrantes__arrow {
+  position: absolute;
+  top: 396px;
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  background: rgba(2, 2, 61, .78);
+  border: 1px solid rgba(201, 169, 110, .55);
+  backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 3;
+  transition: transform .2s ease, background .2s ease;
+}
+.palestrantes__arrow:hover { transform: scale(1.1); background: rgba(2, 2, 61, .95); }
+.palestrantes__arrow img { width: 34px; height: 35.5px; }
+.palestrantes__arrow--l { left: 60px; }
+.palestrantes__arrow--l img { transform: rotate(90deg); }
+.palestrantes__arrow--r { left: 1800px; }
+.palestrantes__arrow--r img { transform: rotate(-90deg); }
+
+/* card */
+.spk {
+  position: relative;
+  flex: none;
+  width: 313px; height: 551px;
+  border-radius: 18px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #101a6e 0%, #02023d 100%);
+  scroll-snap-align: start;
+  box-shadow: 0 18px 40px rgba(0, 0, 20, .45);
+  transition: transform .3s ease;
+}
+.spk:hover { transform: translateY(-4px); }
+.spk__initials {
+  position: absolute;
+  left: 0; right: 0; top: 118px;
+  text-align: center;
+  font: 600 88px/1 var(--f-clash);
+  letter-spacing: 4px;
+  background: var(--gold-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  opacity: .35;
+}
+.spk__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+.spk__shade {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(2,2,61,0) 38%, rgba(2,2,61,.45) 58%, rgba(2,2,61,.92) 100%);
+}
+.spk__info {
+  position: absolute;
+  left: -6px; right: -6px;
+  top: 322px; height: 233px;
+  background: rgba(2, 2, 61, .84);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(232, 213, 176, .28);
+}
+.spk__name {
+  position: absolute;
+  left: 6px; right: 6px; top: 13px;
+  text-align: center;
+  font: 600 18px/25px var(--f-clash);
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  background: var(--gold-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  white-space: nowrap;
+}
+.spk__line {
+  position: absolute;
+  left: 27px; top: 49px;
+  width: 271px; height: 1px;
+  background: var(--gold-grad);
+  opacity: .6;
+}
+.spk__bio {
+  position: absolute;
+  left: 46px; top: 61px;
+  width: 233px;
+  font: 400 12.5px/20px var(--f-dm);
+  text-align: center;
+  color: rgba(255, 255, 255, .88);
+}
+.spk__bar {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 7px;
+  background: var(--gold-grad);
+  z-index: 2;
+}
+
+@media (max-width: 1024px) {
+  .palestrantes {
+    position: relative;
+    left: auto; top: auto;
+    width: 100%;
+    height: auto;
+    padding: 44px 0 8px;
+    overflow: hidden;
+  }
+  .palestrantes::before { left: 0; top: 0; width: 100%; height: 100%; }
+  .palestrantes__h2 {
+    position: relative;
+    left: auto; top: auto;
+    width: 100%;
+    padding: 0 24px;
+    font-size: 26px;
+  }
+  .palestrantes__viewport {
+    position: relative;
+    left: auto; top: auto;
+    width: 100%;
+    height: auto;
+    margin-top: 26px;
+  }
+  .palestrantes__track { padding: 6px 24px 22px; gap: 12px; }
+  .spk { scroll-snap-align: center; box-shadow: 0 12px 28px rgba(0, 0, 20, .4); }
+  .spk:hover { transform: none; }
+  .palestrantes__arrow { display: none; }
 }

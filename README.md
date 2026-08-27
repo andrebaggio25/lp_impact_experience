@@ -66,3 +66,13 @@ já linkado no `<head>` (inclui `apple-touch-icon`).
   pelos vídeos reais quando existirem)
 - Faixa marquee do hero animada
 - Header fixo com blur
+
+## Palestrantes confirmados (carrossel)
+
+13 cards (313×551) na seção azul, acima de "Garanta sua vaga". Setas + autoplay no
+desktop, swipe no mobile. Nomes e bios estão no `index.html` (`<article class="spk">`).
+
+**Fotos**: coloque os originais em `assets/src/palestrantes/<slug>.jpg` (slugs: os nomes
+dos arquivos já referenciados em `index.html`, ex.: `fernanda-dornelles`) e rode
+`python3 tools/convert-webp.py` → gera `assets/img/palestrantes/<slug>.webp` (626×1102,
+~60–90 KB). Enquanto a foto não existe, o card mostra as iniciais.
