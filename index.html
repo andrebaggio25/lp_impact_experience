@@ -120,7 +120,7 @@
 
           <div class="hero__badges">
             <div class="hero__badge hero__badge--1">
-              <p><span class="t-red">Vagas limitadas</span> a 120 pessoas <br>· <span class="t-green">1º lote por R$ 197</span></p>
+              <p><span class="t-red">Vagas limitadas</span> a 120 pessoas <br>· <span class="t-green" id="lote-badge">1º lote por R$ 197</span></p>
             </div>
             <div class="hero__badge hero__badge--2">
               <img src="assets/svg/map-pin.svg" alt="">
@@ -262,9 +262,26 @@
         </div>
 
         <div class="social__carousel" id="carousel">
-          <img class="social__video" src="assets/svg/video-card-1.svg" alt="Depoimento em vídeo 1">
-          <img class="social__video" src="assets/svg/video-card-2.svg" alt="Depoimento em vídeo 2">
-          <img class="social__video" src="assets/svg/video-card-3.svg" alt="Depoimento em vídeo 3">
+          <article class="video" data-vimeo="1221896697" data-name="Sabrina Rosa">
+            <img class="video__poster" src="assets/img/depoimentos/sabrina-rosa.webp" alt="Depoimento de Sabrina Rosa" loading="lazy">
+            <button class="video__play" type="button" aria-label="Assistir depoimento de Sabrina Rosa"><svg viewBox="192 102 47 56" width="47" height="56" aria-hidden="true"><defs><linearGradient id="pg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C9A96E"/><stop offset=".5" stop-color="#E8D5B0"/><stop offset="1" stop-color="#C9A96E"/></linearGradient></defs><path d="M235.5 125.67C238.833 127.594 238.833 132.406 235.5 134.33L199.5 155.115C196.167 157.039 192 154.634 192 150.785L192 109.215C192 105.366 196.167 102.961 199.5 104.885L235.5 125.67Z" fill="url(#pg)"/></svg></button>
+            <span class="video__name">Sabrina Rosa</span>
+          </article>
+          <article class="video" data-vimeo="1221896698" data-name="Raquele Simon">
+            <img class="video__poster" src="assets/img/depoimentos/raquele-simon.webp" alt="Depoimento de Raquele Simon" loading="lazy">
+            <button class="video__play" type="button" aria-label="Assistir depoimento de Raquele Simon"><svg viewBox="192 102 47 56" width="47" height="56" aria-hidden="true"><defs><linearGradient id="pg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C9A96E"/><stop offset=".5" stop-color="#E8D5B0"/><stop offset="1" stop-color="#C9A96E"/></linearGradient></defs><path d="M235.5 125.67C238.833 127.594 238.833 132.406 235.5 134.33L199.5 155.115C196.167 157.039 192 154.634 192 150.785L192 109.215C192 105.366 196.167 102.961 199.5 104.885L235.5 125.67Z" fill="url(#pg)"/></svg></button>
+            <span class="video__name">Raquele Simon</span>
+          </article>
+          <article class="video" data-vimeo="1221896695" data-name="Dai">
+            <img class="video__poster" src="assets/img/depoimentos/dai.webp" alt="Depoimento de Dai" loading="lazy">
+            <button class="video__play" type="button" aria-label="Assistir depoimento de Dai"><svg viewBox="192 102 47 56" width="47" height="56" aria-hidden="true"><defs><linearGradient id="pg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C9A96E"/><stop offset=".5" stop-color="#E8D5B0"/><stop offset="1" stop-color="#C9A96E"/></linearGradient></defs><path d="M235.5 125.67C238.833 127.594 238.833 132.406 235.5 134.33L199.5 155.115C196.167 157.039 192 154.634 192 150.785L192 109.215C192 105.366 196.167 102.961 199.5 104.885L235.5 125.67Z" fill="url(#pg)"/></svg></button>
+            <span class="video__name">Dai</span>
+          </article>
+          <article class="video" data-vimeo="1221896696" data-name="Bruna">
+            <img class="video__poster" src="assets/img/depoimentos/bruna.webp" alt="Depoimento de Bruna" loading="lazy">
+            <button class="video__play" type="button" aria-label="Assistir depoimento de Bruna"><svg viewBox="192 102 47 56" width="47" height="56" aria-hidden="true"><defs><linearGradient id="pg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C9A96E"/><stop offset=".5" stop-color="#E8D5B0"/><stop offset="1" stop-color="#C9A96E"/></linearGradient></defs><path d="M235.5 125.67C238.833 127.594 238.833 132.406 235.5 134.33L199.5 155.115C196.167 157.039 192 154.634 192 150.785L192 109.215C192 105.366 196.167 102.961 199.5 104.885L235.5 125.67Z" fill="url(#pg)"/></svg></button>
+            <span class="video__name">Bruna</span>
+          </article>
         </div>
         <button class="social__arrow social__arrow--l" id="car-prev" aria-label="Anterior"><img src="assets/svg/chevron-left.svg" alt=""></button>
         <button class="social__arrow social__arrow--r" id="car-next" aria-label="Próximo"><img src="assets/svg/chevron-right.svg" alt=""></button>
@@ -494,7 +511,7 @@
 
         <!-- Card 1º lote -->
         <div class="plan plan--1">
-          <p class="plan__lote"><strong>Primeiro Lote</strong> <span class="gold-text">[Disponível agora]</span></p>
+          <p class="plan__lote"><strong>Primeiro Lote</strong> <span class="gold-text" id="lote1-status">[Disponível agora]</span></p>
           <div class="plan__logo"><img src="assets/img/logo-impact.png" alt="IMPACTXPERIENCE"></div>
           <div class="plan__price">
             <p class="plan__de">De <s>R$497,00</s> por:</p>
@@ -528,7 +545,7 @@
             <li><img src="assets/svg/check-white.svg" alt="">Roda de networking + <br>coquetel de encerramento</li>
             <li><img src="assets/svg/check-white.svg" alt="">Material de apoio do evento</li>
           </ul>
-          <a class="plan__btn plan__btn--red" href="#">Avisar quando abrir 🔒</a>
+          <a class="plan__btn plan__btn--red" href="#" id="lote2-btn">Avisar quando abrir 🔒</a>
           <p class="plan__secure"><img src="assets/svg/logo-kiwify.svg" alt="Kiwify"> | Compra segura</p>
         </div>
       </section>
@@ -584,7 +601,7 @@
         <!-- CTA final -->
         <div class="ctafinal">
           <p class="ctafinal__h1"><strong>Vem construir sua rede.</strong> <br>21 de Outubro, Jlab Alphaville. 120 vagas. O próximo passo do seu negócio pode nascer numa conversa desse dia.</p>
-          <a class="btn-gold ctafinal__btn" href="#oferta" data-scroll="5463">Garantir minha vaga por R$187 <img src="assets/svg/arrow-cta-final.svg" alt=""></a>
+          <a class="btn-gold ctafinal__btn" href="#oferta" data-scroll="5463"><span id="cta-final-text">Garantir minha vaga por R$187</span> <img src="assets/svg/arrow-cta-final.svg" alt=""></a>
         </div>
       </section>
 

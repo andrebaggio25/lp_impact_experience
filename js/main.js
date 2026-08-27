@@ -3,10 +3,18 @@
    ========================================================================== */
 
 // --- Configuração -----------------------------------------------------------
-// Data-limite do 1º lote (countdown) e link de checkout (Kiwify)
+// >>> ÚNICO VALOR PENDENTE: data/hora em que o 1º lote encerra (fuso de Brasília).
+//     Quando passar, a página troca sozinha para o 2º lote (cards, countdown,
+//     badge do hero e CTA final).
 const LOTE_DEADLINE = '2026-10-14T23:59:59-03:00';
-const CHECKOUT_URL = '#'; // ex.: 'https://pay.kiwify.com.br/XXXXXXX'
-const SUPORTE_URL = '#';  // ex.: 'https://wa.me/55XXXXXXXXXXX'
+
+const CHECKOUT_LOTE1 = 'https://pay.kiwify.com.br/CLcumTX'; // R$187 à vista / 12x R$18,78
+const CHECKOUT_LOTE2 = 'https://pay.kiwify.com.br/aPrPPPN'; // R$397 à vista / 12x R$29,82
+
+const WHATSAPP_NUMERO = '5511992526671';
+const WHATSAPP_MSG_SUPORTE = 'Olá! Tenho dúvidas sobre o IMPACTXPERIENCE (21 de outubro, Jlab Alphaville) e gostaria de mais informações.';
+const WHATSAPP_MSG_AVISAR = 'Olá! Quero ser avisado(a) quando o 2º lote do IMPACTXPERIENCE abrir.';
+const waLink = (msg) => `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(msg)}`;
 
 const DESIGN_WIDTH = 1920;
 const MOBILE_BREAKPOINT = 1024; // ≤ isso usa o layout mobile (reflow), sem scale
@@ -87,37 +95,109 @@ document.querySelectorAll('.faq__item').forEach((item) => {
   });
 });
 
-// --- Carrossel de depoimentos (rotação simples dos cards) ------------------
+// --- Carrossel de depoimentos (Vimeo, carregado só ao clicar) --------------
 const carousel = document.getElementById('carousel');
-function rotate(dir) {
-  const cards = Array.from(carousel.children);
-  if (dir > 0) carousel.appendChild(cards[0]);
-  else carousel.insertBefore(cards[cards.length - 1], cards[0]);
-  carousel.animate(
-    [{ opacity: 0.55, transform: 'translateX(' + dir * -18 + 'px)' }, { opacity: 1, transform: 'translateX(0)' }],
-    { duration: 350, easing: 'ease' }
-  );
+function scrollCarousel(dir) {
+  const card = carousel.querySelector('.video');
+  const step = card.offsetWidth + 14.16;
+  const max = carousel.scrollWidth - carousel.clientWidth;
+  let next = carousel.scrollLeft + dir * step;
+  if (next > max + 1) next = 0;
+  if (next < -1) next = max;
+  carousel.scrollTo({ left: next, behavior: 'smooth' });
 }
-document.getElementById('car-prev').addEventListener('click', () => rotate(-1));
-document.getElementById('car-next').addEventListener('click', () => rotate(1));
+document.getElementById('car-prev').addEventListener('click', () => scrollCarousel(-1));
+document.getElementById('car-next').addEventListener('click', () => scrollCarousel(1));
 
-// --- Links configuráveis ---------------------------------------------------
-const checkout = document.getElementById('checkout');
-if (checkout && CHECKOUT_URL !== '#') checkout.href = CHECKOUT_URL;
-const suporte = document.getElementById('suporte');
-if (suporte && SUPORTE_URL !== '#') suporte.href = SUPORTE_URL;
+function stopAllVideos() {
+  carousel.querySelectorAll('.video.is-playing').forEach((v) => {
+    v.querySelector('iframe')?.remove();
+    v.classList.remove('is-playing');
+  });
+}
+carousel.querySelectorAll('.video').forEach((v) => {
+  v.addEventListener('click', () => {
+    if (v.classList.contains('is-playing')) return;
+    stopAllVideos();
+    const id = v.dataset.vimeo;
+    const f = document.createElement('iframe');
+    f.src = `https://player.vimeo.com/video/${id}?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1`;
+    f.title = `Depoimento de ${v.dataset.name}`;
+    f.allow = 'autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share';
+    f.referrerPolicy = 'strict-origin-when-cross-origin';
+    f.setAttribute('allowfullscreen', '');
+    v.appendChild(f);
+    v.classList.add('is-playing');
+    pixelTrack('ViewContent', { content_name: `Depoimento - ${v.dataset.name}`, content_type: 'video' });
+  });
+});
 
 // --- Eventos do Meta Pixel (disparam só quando o pixel estiver ativo) ------
 // Ative o pixel no <head> do index.html; nada mais precisa mudar aqui.
 function pixelTrack(event, params) {
   if (typeof window.fbq === 'function') window.fbq('track', event, params || {});
 }
-if (checkout) checkout.addEventListener('click', () =>
+
+// --- Lotes, checkout e WhatsApp --------------------------------------------
+const checkout = document.getElementById('checkout');
+const lote2Btn = document.getElementById('lote2-btn');
+const suporte = document.getElementById('suporte');
+let loteAtual = 1;
+
+function applyLoteState(now) {
+  const lote1Aberto = (now || new Date()) < new Date(LOTE_DEADLINE);
+  loteAtual = lote1Aberto ? 1 : 2;
+  const status = document.getElementById('lote1-status');
+  const badge = document.getElementById('lote-badge');
+  const ctaFinal = document.getElementById('cta-final-text');
+  const label = document.querySelector('.countdown__label');
+  if (lote1Aberto) {
+    checkout.href = CHECKOUT_LOTE1;
+    checkout.textContent = 'Quero garantir por R$187';
+    checkout.classList.remove('is-disabled');
+    lote2Btn.href = waLink(WHATSAPP_MSG_AVISAR);
+    lote2Btn.textContent = 'Avisar quando abrir 🔒';
+    lote2Btn.classList.add('plan__btn--red'); lote2Btn.classList.remove('plan__btn--gold');
+    if (status) status.textContent = '[Disponível agora]';
+    if (badge) badge.textContent = '1º lote por R$ 197';
+    if (ctaFinal) ctaFinal.textContent = 'Garantir minha vaga por R$187';
+    if (label) label.innerHTML = '<strong>Primeiro Lote</strong> encerra em:';
+  } else {
+    checkout.href = '#';
+    checkout.textContent = '1º lote encerrado';
+    checkout.classList.add('is-disabled');
+    lote2Btn.href = CHECKOUT_LOTE2;
+    lote2Btn.textContent = 'Quero garantir por R$397';
+    lote2Btn.classList.remove('plan__btn--red'); lote2Btn.classList.add('plan__btn--gold');
+    if (status) status.textContent = '[Encerrado]';
+    if (badge) badge.textContent = '2º lote por R$ 397';
+    if (ctaFinal) ctaFinal.textContent = 'Garantir minha vaga por R$397';
+    if (label) label.innerHTML = '<strong>Primeiro Lote</strong> encerrado — 2º lote disponível';
+  }
+  [checkout, lote2Btn].forEach((a) => { a.target = '_blank'; a.rel = 'noopener'; });
+}
+applyLoteState();
+setInterval(() => applyLoteState(), 60000);
+window.__applyLoteState = applyLoteState; // para testes
+
+// CTA final passa a ir direto ao checkout do lote vigente
+const ctaFinalBtn = document.querySelector('.ctafinal__btn');
+if (ctaFinalBtn) ctaFinalBtn.addEventListener('click', (e) => {
+  e.preventDefault(); e.stopImmediatePropagation();
+  const url = loteAtual === 1 ? CHECKOUT_LOTE1 : CHECKOUT_LOTE2;
+  pixelTrack('InitiateCheckout', { value: loteAtual === 1 ? 187.0 : 397.0, currency: 'BRL', content_name: loteAtual === 1 ? 'Primeiro Lote' : 'Segundo Lote' });
+  window.open(url, '_blank', 'noopener');
+}, true);
+
+suporte.href = waLink(WHATSAPP_MSG_SUPORTE);
+suporte.target = '_blank'; suporte.rel = 'noopener';
+
+checkout.addEventListener('click', () =>
   pixelTrack('InitiateCheckout', { value: 187.0, currency: 'BRL', content_name: 'Primeiro Lote' }));
-if (suporte) suporte.addEventListener('click', () => pixelTrack('Contact'));
-const avisar = document.querySelector('.plan__btn--red');
-if (avisar) avisar.addEventListener('click', () =>
-  pixelTrack('Lead', { content_name: 'Avisar quando abrir - Segundo Lote' }));
+lote2Btn.addEventListener('click', () => loteAtual === 1
+  ? pixelTrack('Lead', { content_name: 'Avisar quando abrir - Segundo Lote' })
+  : pixelTrack('InitiateCheckout', { value: 397.0, currency: 'BRL', content_name: 'Segundo Lote' }));
+suporte.addEventListener('click', () => pixelTrack('Contact'));
 
 // --- Carrossel de palestrantes ---------------------------------------------
 const spkViewport = document.getElementById('spk-viewport');

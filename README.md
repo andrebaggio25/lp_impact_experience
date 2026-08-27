@@ -16,11 +16,23 @@ Ou apenas abrir `index.html` no navegador (as fontes vêm de CDN — precisa de 
 
 | Constante | O que é |
 |---|---|
-| `LOTE_DEADLINE` | Data-limite do countdown do 1º lote (hoje: `2026-10-14T23:59:59-03:00`) |
-| `CHECKOUT_URL` | Link do checkout Kiwify do botão "Quero garantir por R$187" |
-| `SUPORTE_URL` | Link do botão "Falar com suporte!" (ex.: WhatsApp) |
+| `LOTE_DEADLINE` | **Único valor pendente.** Data/hora em que o 1º lote encerra (fuso −03:00). Hoje: `2026-10-14T23:59:59-03:00` |
+| `CHECKOUT_LOTE1` | Kiwify do 1º lote (R$187) — `https://pay.kiwify.com.br/CLcumTX` |
+| `CHECKOUT_LOTE2` | Kiwify do 2º lote (R$397) — `https://pay.kiwify.com.br/aPrPPPN` |
+| `WHATSAPP_NUMERO` | Suporte: `5511992526671` |
+| `WHATSAPP_MSG_SUPORTE` / `WHATSAPP_MSG_AVISAR` | Mensagens pré-preenchidas dos links de WhatsApp |
 
-Todos os botões "Garantir minha vaga" rolam até a seção de oferta (`#oferta`).
+**Troca automática de lote**: enquanto `LOTE_DEADLINE` não passa, o card 1 vende (R$187) e o
+card 2 mostra "Avisar quando abrir" (WhatsApp). Quando passa, sozinho: card 1 vira
+"1º lote encerrado" (desabilitado), card 2 vira "Quero garantir por R$397" (checkout do 2º
+lote), o badge do hero, o CTA final e o rótulo do countdown atualizam. Os botões
+"Garantir minha vaga" rolam até a oferta; o CTA final abre direto o checkout vigente.
+
+## Depoimentos (Vimeo)
+
+4 vídeos em `index.html` (`<article class="video" data-vimeo="ID">`). O card mostra a capa
+local (`assets/img/depoimentos/*.webp`) com o play dourado do design; o iframe do Vimeo
+só é criado ao clicar (autoplay), e só um toca por vez. Sem script externo do player.
 
 ## Pixel / Analytics
 
@@ -65,8 +77,7 @@ Todas as fontes estão em `assets/fonts/` (woff2, subset latin, só os pesos usa
 
 - Countdown ao vivo até `LOTE_DEADLINE`
 - FAQ acordeão (primeira pergunta aberta, como no design)
-- Carrossel de depoimentos com setas (cards placeholder do design — substituir
-  pelos vídeos reais quando existirem)
+- Carrossel de depoimentos (4 vídeos Vimeo, lazy) com setas / swipe
 - Faixa marquee do hero animada
 - Header fixo com blur
 
