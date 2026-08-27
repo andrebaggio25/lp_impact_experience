@@ -50,13 +50,16 @@ já linkado no `<head>` (inclui `apple-touch-icon`).
   (strip dourado rotacionado + logo como `mask-image`), pois o export excedeu o
   limite mensal do MCP no plano Starter.
 
-## Fontes
+## Fontes (self-hosted)
 
-- **Clash Display** — Fontshare (CDN no `<head>`)
-- **Inter, Archivo, DM Sans, Lexend, Instrument Sans** — Google Fonts
+Todas as fontes estão em `assets/fonts/` (woff2, subset latin, só os pesos usados —
+629 KB no total) e declaradas em `css/fonts.css`. Nada é carregado de CDN.
+
+- **Clash Display** 400/500/600 — Fontshare (ITF Free Font License)
+- **Inter, Archivo, DM Sans, Lexend, Instrument Sans** — Google Fonts (OFL)
 - **PP Neue Montreal** (garantia/FAQ) é fonte comercial: o CSS usa
   `'PP Neue Montreal', 'Instrument Sans', ...` — se você tiver a licença, basta
-  adicionar o `@font-face` que ela é usada automaticamente.
+  adicionar o `@font-face` em `css/fonts.css` que ela é usada automaticamente.
 
 ## Interações
 
@@ -72,7 +75,7 @@ já linkado no `<head>` (inclui `apple-touch-icon`).
 13 cards (313×551) na seção azul, acima de "Garanta sua vaga". Setas + autoplay no
 desktop, swipe no mobile. Nomes e bios estão no `index.html` (`<article class="spk">`).
 
-**Fotos**: coloque os originais em `assets/src/palestrantes/<slug>.jpg` (slugs: os nomes
-dos arquivos já referenciados em `index.html`, ex.: `fernanda-dornelles`) e rode
-`python3 tools/convert-webp.py` → gera `assets/img/palestrantes/<slug>.webp` (626×1102,
-~60–90 KB). Enquanto a foto não existe, o card mostra as iniciais.
+**Fotos**: os originais (PNG 2× exportados do Figma) ficam em `assets/src/palestrantes/`
+e as versões otimizadas usadas na página em `assets/img/palestrantes/<slug>.webp`
+(626×1102, 20–80 KB cada, 467 KB no total). Para trocar/adicionar uma foto: coloque o
+original em `assets/src/palestrantes/<slug>.jpg|png` e rode `python3 tools/convert-webp.py`.
