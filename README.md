@@ -33,8 +33,8 @@ direto o checkout vigente.
 ## Compartilhamento (link bonito no WhatsApp/redes)
 
 O `<head>` tem as tags Open Graph / Twitter com a miniatura `assets/img/og-image.jpg`
-(1200×630, gerada do hero). **Ao publicar, troque `https://SEU-DOMINIO.com.br` pelo domínio
-real** nas tags `og:url`, `og:image` e `twitter:image` — as redes exigem URL absoluta.
+(1200×630, gerada do hero) apontando para `https://impactxperience.com.br` (og:url, og:image,
+twitter:image e canonical). Se o domínio mudar, é só trocar nessas 4 linhas do `<head>`.
 Favicon: `favicon.ico` na raiz + PNGs em `assets/img/` (inclui `apple-touch-icon`).
 
 ## Depoimentos (Vimeo)
