@@ -600,6 +600,10 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
 .video.is-playing { cursor: default; }
 .plan__btn.is-disabled { opacity: .45; pointer-events: none; }
 .oferta.no-countdown .plan { top: 5886px; } /* sem countdown: cards sobem 90px (desktop) */
+/* lote 2 ativo: o card do 2º lote assume a 1ª posição */
+.oferta.lote2-active .plan--1 { left: 970px; }
+.oferta.lote2-active .plan--2 { left: 420px; }
+.plan__lote #lote2-status { font-weight: 400; }
 .social__arrow {
   position: absolute;
   top: 2991px;
@@ -1054,11 +1058,11 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
 
   /* header ------------------------------------------------------------ */
   .fixo { width: 100%; }
-  .fixo__container { width: auto; padding: 12px 16px; }
-  .fixo__left { gap: 0; }
+  .fixo__container { width: auto; padding: 12px 16px; gap: 12px; }
+  .fixo__left { gap: 0; flex: 1; min-width: 0; }
   .fixo__links { display: none; }
-  .fixo__logo { width: 170px; height: 21px; }
-  .fixo__cta { padding: 9px 14px; font-size: 12px; }
+  .fixo__logo { width: 156px; height: 19.5px; flex: none; }
+  .fixo__cta { padding: 9px 13px; font-size: 12px; flex: none; }
 
   /* hero --------------------------------------------------------------- */
   .hero {
@@ -1087,7 +1091,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   .hero__headline { position: static; width: 100%; text-align: center; }
   .hero__kicker { font-size: 16px; letter-spacing: 5px; }
   .hero__title { font-size: 36px; line-height: .95; padding-bottom: 6px; }
-  .hero__sub { width: 100%; font-size: 16px; letter-spacing: .3px; margin-top: 12px; }
+  .hero__sub { width: 100%; font-size: 17px; letter-spacing: .2px; margin-top: 12px; }
   .hero__sub br { display: none; }
 
   .hero__badges {
@@ -1157,7 +1161,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
     padding: 40px 24px 8px;
   }
   .dores__col { position: static; width: 100% !important; }
-  .dores__col p { font-size: 16px; }
+  .dores__col p { font-size: 15px; }
   .dores__x { width: 30px; height: 31px; }
 
   /* conectado ----------------------------------------------------------- */
@@ -1169,8 +1173,8 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
     padding: 26px 24px 44px;
   }
   .conectado__text { position: static; order: 1; width: 100%; text-align: center; }
-  .conectado__h2 { width: 100%; font-size: 27px; }
-  .conectado__lead { font-size: 18px; margin-top: 12px; }
+  .conectado__h2 { width: 100%; font-size: 26px; }
+  .conectado__lead { font-size: 17px; margin-top: 12px; }
   .conectado__pill {
     position: static;
     order: 2;
@@ -1241,7 +1245,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   @media (min-width: 528px) { .leva__cardtx { margin-left: auto; margin-right: auto; } }
   .leva__t { font-size: 18px; margin-bottom: 10px; }
   .leva__t br { display: none; }
-  .leva__d { width: 100%; font-size: 16px; line-height: 1.35; }
+  .leva__d { width: 100%; font-size: 15px; line-height: 1.4; }
   .leva__d br { display: none; }
   .leva .divider { margin-top: 28px; }
 
@@ -1336,7 +1340,15 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
     overflow: hidden;
     padding: 46px 0 56px;
     background: radial-gradient(130% 55% at 50% 32%, #1428a8 0%, var(--navy) 72%);
+    display: flex;
+    flex-direction: column;
   }
+  .oferta__titles { order: 1; }
+  .countdown { order: 2; }
+  .plan--1 { order: 3; }
+  .plan--2 { order: 4; }
+  .oferta.lote2-active .plan--2 { order: 3; }
+  .oferta.lote2-active .plan--1 { order: 4; }
   .band--x1, .band--x2 {
     width: 220%;
     height: 78px;
@@ -1347,7 +1359,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   .band--x2 { transform: rotate(-17deg); }
   .band--x1 .band__logos, .band--x2 .band__logos { -webkit-mask-size: 232px 27px; mask-size: 232px 27px; }
   .oferta__titles { position: relative; z-index: 2; width: 100%; padding: 0 24px; gap: 10px; left: auto; top: auto; }
-  .oferta__titles h2 { font-size: 25px; }
+  .oferta__titles h2 { font-size: 26px; }
   .oferta__titles p { font-size: 16px; width: auto; }
   .countdown { position: relative; z-index: 2; left: auto; top: auto; transform: none; margin-top: 26px; gap: 14px; }
   .countdown__label { font-size: 20px; }
@@ -1425,18 +1437,18 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
     text-align: center;
   }
   .garantia__pill { font-size: 12px; line-height: 20px; padding: 7px 16px; }
-  .garantia__title { font-size: 23px; white-space: normal; }
+  .garantia__title { font-size: 24px; white-space: normal; }
   .garantia__seal { position: static; width: 210px; height: 210px; margin: 22px auto; }
   .garantia__text { position: static; width: 100%; font-size: 15px; line-height: 1.4; text-align: center; }
   .garantia__cta { margin: 20px auto 0; }
 
   .faq { position: static; width: 100%; padding: 34px 24px 0; }
   .faq__qmark { position: static; width: 14px; height: 29px; margin: 0 auto 8px; }
-  .faq__title { position: static; font-size: 24px; white-space: normal; text-align: center; }
+  .faq__title { position: static; font-size: 26px; white-space: normal; text-align: center; }
   .faq__desc { position: static; width: 100%; margin-top: 10px; font-size: 15px; text-align: center; }
   .faq__suporte { position: static; width: 210px; height: 48px; margin: 16px auto 0; font-size: 15px; }
   .faq__list { position: static; width: 100%; margin-top: 26px; }
-  .faq__q { font-size: 16.5px; padding: 17px 44px 16px 0; }
+  .faq__q { font-size: 16px; padding: 17px 44px 16px 0; }
   .faq__a p { width: 100%; font-size: 14px; padding-bottom: 18px; }
   .faq__a br { display: none; }
   .faq__icon { width: 13px; height: 13px; right: 4px; }
@@ -1449,7 +1461,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
     margin-top: 44px;
     padding: 0 24px;
   }
-  .ctafinal__h1 { width: 100%; font-size: 24px; line-height: 1.25; }
+  .ctafinal__h1 { width: 100%; font-size: 26px; line-height: 1.25; }
   .ctafinal__btn { margin-top: 24px; }
 
   /* footer -------------------------------------------------------------- */
@@ -1645,4 +1657,18 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   .spk { scroll-snap-align: center; }
   .spk:hover { transform: none; }
   .palestrantes__arrow { display: none; }
+}
+
+/* celulares pequenos (≤400px) */
+@media (max-width: 400px) {
+  .fixo__container { padding: 10px 12px; gap: 8px; }
+  .fixo__logo { width: 128px; height: 16px; }
+  .fixo__cta { padding: 8px 10px; font-size: 11px; border-radius: 9px; }
+  .hero { padding-top: 78px; }
+  .hero__title { font-size: 32px; }
+  .hero__sub { font-size: 16px; }
+  .conectado__h2, .social__h2, .dia__head h2, .palestrantes__h2, .oferta__titles h2,
+  .faq__title, .ctafinal__h1 { font-size: 24px; }
+  .leva__h2 { font-size: 19px; letter-spacing: 1px; }
+  .plan__valor { font-size: 50px; }
 }

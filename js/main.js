@@ -24,6 +24,7 @@ const WHATSAPP_MSG_SUPORTE = 'Olá! Tenho dúvidas sobre o IMPACTXPERIENCE (21 d
 const WHATSAPP_MSG_AVISAR = 'Olá! Quero ser avisado(a) quando o 2º lote do IMPACTXPERIENCE abrir.';
 const waLink = (msg) => `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(msg)}`;
 
+let loteAtual = LOTE_ATUAL;
 const DESIGN_WIDTH = 1920;
 const MOBILE_BREAKPOINT = 1024; // ≤ isso usa o layout mobile (reflow), sem scale
 const stage = document.getElementById('stage');
@@ -50,18 +51,23 @@ window.addEventListener('resize', rescale);
 rescale();
 
 // --- Scroll suave para âncoras ---------------------------------------------
-// Desktop: compensa a escala do canvas; mobile: scroll normal até o elemento.
+// "#oferta" mira o card do lote ativo e garante que o botão de checkout fique
+// visível (alinha o topo do card sob o header; se o card for mais alto que a
+// tela, alinha o rodapé do card). Funciona no canvas escalado e no mobile.
+function scrollToActiveCard() {
+  const card = document.querySelector(loteAtual === 2 ? '.plan--2' : '.plan--1');
+  const header = document.getElementById('fixo').getBoundingClientRect().height;
+  const r = card.getBoundingClientRect();
+  const y1 = window.scrollY + r.top - header - 16;
+  const y2 = window.scrollY + r.bottom + 24 - window.innerHeight;
+  window.scrollTo({ top: Math.max(y1, y2), behavior: 'smooth' });
+}
 document.querySelectorAll('[data-scroll]').forEach((el) => {
   el.addEventListener('click', (e) => {
     e.preventDefault();
+    if (el.getAttribute('href') === '#oferta') return scrollToActiveCard();
     const target = document.querySelector(el.getAttribute('href'));
-    if (isMobile()) {
-      if (target) target.scrollIntoView({ behavior: 'smooth' });
-      return;
-    }
-    const y = parseFloat(el.dataset.scroll) || 0;
-    const scale = document.documentElement.clientWidth / DESIGN_WIDTH;
-    window.scrollTo({ top: y * scale, behavior: 'smooth' });
+    if (target) window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY, behavior: 'smooth' });
   });
 });
 
@@ -151,8 +157,6 @@ function pixelTrack(event, params) {
 const checkout = document.getElementById('checkout');
 const lote2Btn = document.getElementById('lote2-btn');
 const suporte = document.getElementById('suporte');
-let loteAtual = LOTE_ATUAL;
-
 function applyLoteState(lote) {
   loteAtual = lote || LOTE_ATUAL;
   const lote1Aberto = loteAtual === 1;
@@ -161,6 +165,12 @@ function applyLoteState(lote) {
   const ctaFinal = document.getElementById('cta-final-text');
   const label = document.querySelector('.countdown__label');
   const vagas = Number.isFinite(VAGAS_RESTANTES) ? ` — restam ${VAGAS_RESTANTES} vagas` : '';
+  const oferta = document.getElementById('oferta');
+  const lote2Title = document.getElementById('lote2-title');
+  const lote2Status = document.getElementById('lote2-status');
+  oferta.classList.toggle('lote2-active', !lote1Aberto);
+  if (lote2Title) lote2Title.classList.toggle('t-red', lote1Aberto);
+  if (lote2Status) lote2Status.textContent = lote1Aberto ? '' : '[Disponível agora]';
   if (lote1Aberto) {
     checkout.href = CHECKOUT_LOTE1;
     checkout.textContent = 'Quero garantir por R$187';
