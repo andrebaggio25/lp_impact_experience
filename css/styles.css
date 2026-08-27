@@ -1431,6 +1431,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   overflow-x: auto;
   overflow-y: hidden;
   scroll-snap-type: x mandatory;
+  scroll-padding: 0 160px;
   scroll-behavior: smooth;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
@@ -1438,7 +1439,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
 .palestrantes__viewport::-webkit-scrollbar { display: none; }
 .palestrantes__track {
   display: flex;
-  gap: 11px;
+  gap: 11.7px;
   width: max-content;
   padding: 10px 160px;
 }
@@ -1461,17 +1462,23 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
 .palestrantes__arrow--r { left: 1800px; }
 .palestrantes__arrow--r img { transform: rotate(-90deg); }
 
-/* card */
+/* card — valores exatos do Figma (frame "daniel" 2:26) */
 .spk {
   position: relative;
   flex: none;
-  width: 313px; height: 551px;
-  border-radius: 18px;
+  width: 311px; height: 551px;
   overflow: hidden;
-  background: linear-gradient(180deg, #101a6e 0%, #02023d 100%);
+  background: #000;
   scroll-snap-align: start;
-  box-shadow: 0 18px 40px rgba(0, 0, 20, .45);
   transition: transform .3s ease;
+}
+.spk::after {
+  content: '';
+  position: absolute; inset: 0;
+  border: 1px solid transparent;
+  border-image: linear-gradient(90deg, #fde2b8 0%, #b7945c 100%) 1;
+  pointer-events: none;
+  z-index: 3;
 }
 .spk:hover { transform: translateY(-4px); }
 .spk__initials {
@@ -1488,57 +1495,53 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
 }
 .spk__photo {
   position: absolute;
-  inset: 0;
-  width: 100%; height: 100%;
+  left: 0; top: 0;
+  width: 313px; height: 551px;
   object-fit: cover;
   object-position: center top;
 }
 .spk__shade {
   position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(2,2,61,0) 38%, rgba(2,2,61,.45) 58%, rgba(2,2,61,.92) 100%);
+  background: linear-gradient(180deg, rgba(0,0,0,0) 30%, #000 70%);
+  opacity: .64;
 }
 .spk__info {
   position: absolute;
-  left: -6px; right: -6px;
+  left: -6px; width: 325px;
   top: 322px; height: 233px;
-  background: rgba(2, 2, 61, .84);
+  background: rgba(0, 0, 0, .14);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border-top: 1px solid rgba(232, 213, 176, .28);
+  border: 1px solid transparent;
+  border-image: linear-gradient(90deg, rgba(55,55,55,.44) 0%, rgba(255,255,255,.44) 100%) 1;
 }
 .spk__name {
   position: absolute;
-  left: 6px; right: 6px; top: 13px;
+  left: 6px; width: 311px; top: 13px;
   text-align: center;
-  font: 600 18px/25px var(--f-clash);
+  font: 500 20.45px/25.15px var(--f-clash);
   text-transform: uppercase;
-  letter-spacing: .5px;
   background: var(--gold-grad);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   white-space: nowrap;
 }
-.spk__line {
-  position: absolute;
-  left: 27px; top: 49px;
-  width: 271px; height: 1px;
-  background: var(--gold-grad);
-  opacity: .6;
-}
+.spk__line { display: none; } /* Line 16 do Figma tem espessura 0 */
 .spk__bio {
   position: absolute;
   left: 46px; top: 61px;
-  width: 233px;
-  font: 400 12.5px/20px var(--f-dm);
+  width: 232px; height: 140px;
+  display: flex; align-items: center; justify-content: center;
+  font: 300 16px/19.68px var(--f-inter);
   text-align: center;
-  color: rgba(255, 255, 255, .88);
+  color: #fff;
 }
 .spk__bar {
   position: absolute;
   left: 0; right: 0; bottom: 0;
   height: 7px;
-  background: var(--gold-grad);
+  background: linear-gradient(90deg, #fde2b8 0%, #b7945c 100%);
   z-index: 2;
 }
 
@@ -1565,9 +1568,10 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
     width: 100%;
     height: auto;
     margin-top: 26px;
+    scroll-padding: 0 24px;
   }
   .palestrantes__track { padding: 6px 24px 22px; gap: 12px; }
-  .spk { scroll-snap-align: center; box-shadow: 0 12px 28px rgba(0, 0, 20, .4); }
+  .spk { scroll-snap-align: center; }
   .spk:hover { transform: none; }
   .palestrantes__arrow { display: none; }
 }
