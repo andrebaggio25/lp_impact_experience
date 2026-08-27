@@ -16,17 +16,26 @@ Ou apenas abrir `index.html` no navegador (as fontes vêm de CDN — precisa de 
 
 | Constante | O que é |
 |---|---|
-| `LOTE_DEADLINE` | **Único valor pendente.** Data/hora em que o 1º lote encerra (fuso −03:00). Hoje: `2026-10-14T23:59:59-03:00` |
-| `CHECKOUT_LOTE1` | Kiwify do 1º lote (R$187) — `https://pay.kiwify.com.br/CLcumTX` |
-| `CHECKOUT_LOTE2` | Kiwify do 2º lote (R$397) — `https://pay.kiwify.com.br/aPrPPPN` |
+| `LOTE_ATUAL` | **O interruptor.** `1` = 1º lote vendendo (R$187); `2` = 1º lote esgotado, 2º vendendo (R$397). Troque o número e publique. |
+| `VAGAS_RESTANTES` | Opcional: número de vagas restantes → mostra "restam N vagas" na oferta. `null` = não mostra. |
+| `LOTE_DEADLINE` | Opcional: data-limite (`'2026-10-14T23:59:59-03:00'`) → mostra o countdown. `''` = sem countdown. |
+| `CHECKOUT_LOTE1` | Kiwify do 1º lote — `https://pay.kiwify.com.br/CLcumTX` |
+| `CHECKOUT_LOTE2` | Kiwify do 2º lote — `https://pay.kiwify.com.br/aPrPPPN` |
 | `WHATSAPP_NUMERO` | Suporte: `5511992526671` |
 | `WHATSAPP_MSG_SUPORTE` / `WHATSAPP_MSG_AVISAR` | Mensagens pré-preenchidas dos links de WhatsApp |
 
-**Troca automática de lote**: enquanto `LOTE_DEADLINE` não passa, o card 1 vende (R$187) e o
-card 2 mostra "Avisar quando abrir" (WhatsApp). Quando passa, sozinho: card 1 vira
-"1º lote encerrado" (desabilitado), card 2 vira "Quero garantir por R$397" (checkout do 2º
-lote), o badge do hero, o CTA final e o rótulo do countdown atualizam. Os botões
-"Garantir minha vaga" rolam até a oferta; o CTA final abre direto o checkout vigente.
+**O que `LOTE_ATUAL` muda sozinho**: com `1`, o card 1 vende e o card 2 mostra "Avisar quando
+abrir" (WhatsApp). Com `2`, o card 1 vira "1º lote esgotado" (desabilitado), o card 2 vira
+"Quero garantir por R$397" (checkout do 2º lote), e o badge do hero, o CTA final e o rótulo
+da oferta atualizam. Os botões "Garantir minha vaga" rolam até a oferta; o CTA final abre
+direto o checkout vigente.
+
+## Compartilhamento (link bonito no WhatsApp/redes)
+
+O `<head>` tem as tags Open Graph / Twitter com a miniatura `assets/img/og-image.jpg`
+(1200×630, gerada do hero). **Ao publicar, troque `https://SEU-DOMINIO.com.br` pelo domínio
+real** nas tags `og:url`, `og:image` e `twitter:image` — as redes exigem URL absoluta.
+Favicon: `favicon.ico` na raiz + PNGs em `assets/img/` (inclui `apple-touch-icon`).
 
 ## Depoimentos (Vimeo)
 

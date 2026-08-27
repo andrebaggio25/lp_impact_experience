@@ -599,6 +599,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
 .video.is-playing .video__name { display: none; }
 .video.is-playing { cursor: default; }
 .plan__btn.is-disabled { opacity: .45; pointer-events: none; }
+.oferta.no-countdown .plan { top: 5886px; } /* sem countdown: cards sobem 90px (desktop) */
 .social__arrow {
   position: absolute;
   top: 2991px;
@@ -1359,7 +1360,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   .plan {
     position: relative;
     left: auto !important;
-    top: auto;
+    top: auto !important;
     width: auto;
     max-width: 480px;
     height: auto;

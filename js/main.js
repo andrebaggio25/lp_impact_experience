@@ -3,10 +3,18 @@
    ========================================================================== */
 
 // --- Configuração -----------------------------------------------------------
-// >>> ÚNICO VALOR PENDENTE: data/hora em que o 1º lote encerra (fuso de Brasília).
-//     Quando passar, a página troca sozinha para o 2º lote (cards, countdown,
-//     badge do hero e CTA final).
-const LOTE_DEADLINE = '2026-10-14T23:59:59-03:00';
+// >>> TROCA DE LOTE (manual, por número de vagas):
+//     1 = primeiro lote vendendo (R$187)  |  2 = primeiro lote esgotado, segundo vendendo (R$397)
+//     Basta trocar o número abaixo e publicar. Cards, badge do hero, CTA final e
+//     rótulo da oferta mudam sozinhos.
+const LOTE_ATUAL = 1;
+
+// Opcional: vagas restantes no lote atual -> mostra "restam N vagas" na oferta. null = não mostra.
+const VAGAS_RESTANTES = null;
+
+// Opcional: se um dia houver data-limite, coloque aqui (ex.: '2026-10-14T23:59:59-03:00')
+// que o countdown aparece. '' = sem countdown (só o rótulo do lote).
+const LOTE_DEADLINE = '';
 
 const CHECKOUT_LOTE1 = 'https://pay.kiwify.com.br/CLcumTX'; // R$187 à vista / 12x R$18,78
 const CHECKOUT_LOTE2 = 'https://pay.kiwify.com.br/aPrPPPN'; // R$397 à vista / 12x R$29,82
@@ -64,7 +72,7 @@ if (track) {
   for (let i = 0; i < 23; i++) track.appendChild(unit.cloneNode(true));
 }
 
-// --- Countdown do 1º lote --------------------------------------------------
+// --- Countdown (só se LOTE_DEADLINE estiver preenchido) --------------------
 const pad = (n) => String(Math.max(0, n)).padStart(2, '0');
 function tick() {
   const diff = new Date(LOTE_DEADLINE) - new Date();
@@ -77,8 +85,9 @@ function tick() {
   document.getElementById('cd-m').textContent = pad(m);
   document.getElementById('cd-s').textContent = pad(s);
 }
-tick();
-setInterval(tick, 1000);
+const timerEl = document.getElementById('countdown');
+if (LOTE_DEADLINE) { tick(); setInterval(tick, 1000); }
+else { if (timerEl) timerEl.style.display = 'none'; document.getElementById('oferta').classList.add('no-countdown'); }
 
 // --- FAQ (acordeão) --------------------------------------------------------
 document.querySelectorAll('.faq__item').forEach((item) => {
@@ -142,15 +151,16 @@ function pixelTrack(event, params) {
 const checkout = document.getElementById('checkout');
 const lote2Btn = document.getElementById('lote2-btn');
 const suporte = document.getElementById('suporte');
-let loteAtual = 1;
+let loteAtual = LOTE_ATUAL;
 
-function applyLoteState(now) {
-  const lote1Aberto = (now || new Date()) < new Date(LOTE_DEADLINE);
-  loteAtual = lote1Aberto ? 1 : 2;
+function applyLoteState(lote) {
+  loteAtual = lote || LOTE_ATUAL;
+  const lote1Aberto = loteAtual === 1;
   const status = document.getElementById('lote1-status');
   const badge = document.getElementById('lote-badge');
   const ctaFinal = document.getElementById('cta-final-text');
   const label = document.querySelector('.countdown__label');
+  const vagas = Number.isFinite(VAGAS_RESTANTES) ? ` — restam ${VAGAS_RESTANTES} vagas` : '';
   if (lote1Aberto) {
     checkout.href = CHECKOUT_LOTE1;
     checkout.textContent = 'Quero garantir por R$187';
@@ -159,26 +169,29 @@ function applyLoteState(now) {
     lote2Btn.textContent = 'Avisar quando abrir 🔒';
     lote2Btn.classList.add('plan__btn--red'); lote2Btn.classList.remove('plan__btn--gold');
     if (status) status.textContent = '[Disponível agora]';
-    if (badge) badge.textContent = '1º lote por R$ 197';
+    if (badge) badge.textContent = '1º lote por R$ 187';
     if (ctaFinal) ctaFinal.textContent = 'Garantir minha vaga por R$187';
-    if (label) label.innerHTML = '<strong>Primeiro Lote</strong> encerra em:';
+    if (label) label.innerHTML = LOTE_DEADLINE
+      ? '<strong>Primeiro Lote</strong> encerra em:'
+      : `<strong>Primeiro Lote</strong> aberto${vagas || ' — vagas limitadas'}`;
   } else {
     checkout.href = '#';
-    checkout.textContent = '1º lote encerrado';
+    checkout.textContent = '1º lote esgotado';
     checkout.classList.add('is-disabled');
     lote2Btn.href = CHECKOUT_LOTE2;
     lote2Btn.textContent = 'Quero garantir por R$397';
     lote2Btn.classList.remove('plan__btn--red'); lote2Btn.classList.add('plan__btn--gold');
-    if (status) status.textContent = '[Encerrado]';
+    if (status) status.textContent = '[Esgotado]';
     if (badge) badge.textContent = '2º lote por R$ 397';
     if (ctaFinal) ctaFinal.textContent = 'Garantir minha vaga por R$397';
-    if (label) label.innerHTML = '<strong>Primeiro Lote</strong> encerrado — 2º lote disponível';
+    if (label) label.innerHTML = LOTE_DEADLINE
+      ? '<strong>Segundo Lote</strong> encerra em:'
+      : `<strong>Segundo Lote</strong> disponível${vagas} — 1º lote esgotado`;
   }
   [checkout, lote2Btn].forEach((a) => { a.target = '_blank'; a.rel = 'noopener'; });
 }
 applyLoteState();
-setInterval(() => applyLoteState(), 60000);
-window.__applyLoteState = applyLoteState; // para testes
+window.__applyLoteState = applyLoteState; // para testes: __applyLoteState(2)
 
 // CTA final passa a ir direto ao checkout do lote vigente
 const ctaFinalBtn = document.querySelector('.ctafinal__btn');
