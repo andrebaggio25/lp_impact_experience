@@ -16,8 +16,8 @@ const VAGAS_RESTANTES = null;
 // que o countdown aparece. '' = sem countdown (só o rótulo do lote).
 const LOTE_DEADLINE = '';
 
-const CHECKOUT_LOTE1 = 'https://pay.kiwify.com.br/CLcumTX'; // R$187 à vista / 12x R$18,78
-const CHECKOUT_LOTE2 = 'https://pay.kiwify.com.br/aPrPPPN'; // R$397 à vista / 12x R$29,82
+const CHECKOUT_LOTE1 = 'https://pay.kiwify.com.br/CLcumTX'; // R$187 à vista / 2x R$93,50
+const CHECKOUT_LOTE2 = 'https://pay.kiwify.com.br/aPrPPPN'; // R$397 à vista / 2x R$198,50
 
 const WHATSAPP_NUMERO = '5511992526671';
 const WHATSAPP_MSG_SUPORTE = 'Olá! Tenho dúvidas sobre o IMPACTXPERIENCE (21 de outubro, Jlab Alphaville) e gostaria de mais informações.';

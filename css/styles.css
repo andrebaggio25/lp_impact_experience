@@ -253,9 +253,8 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
 
 .hero__founders { position: absolute; inset: 0; }
 .hero__founder { position: absolute; object-fit: cover; }
-.hero__founder--left   { left: 767px;  top: 38px; width: 533px; height: 800px; }
-.hero__founder--right  { left: 1278px; top: 76px; width: 593px; height: 762px; }
-.hero__founder--center { left: 992px;  top: 76px; width: 631px; height: 790px; }
+.hero__founder--left   { left: 1017px; top: 38px; width: 533px; height: 800px; }
+.hero__founder--center { left: 1242px; top: 76px; width: 631px; height: 790px; }
 
 .hero__fade { position: absolute; pointer-events: none; }
 .hero__fade--b1 { left: 1px; top: 378px; width: 1920px; height: 482px;
@@ -1128,9 +1127,8 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
     height: 300px;
     margin-top: 10px;
   }
-  .hero__founder--left   { left: 0;  top: auto; bottom: 0; width: auto; height: 265px; z-index: 0; }
-  .hero__founder--right  { left: auto; right: -14px; top: auto; bottom: 0; width: auto; height: 255px; z-index: 1; }
-  .hero__founder--center { left: 50%; transform: translateX(-50%); top: auto; bottom: 0; width: auto; height: 295px; z-index: 2; }
+  .hero__founder--left   { left: calc(50% - 176px); top: auto; bottom: 0; width: auto; height: 265px; z-index: 0; }
+  .hero__founder--center { left: calc(50% - 62px);  top: auto; bottom: 0; width: auto; height: 295px; z-index: 2; }
   .hero__founders::after {
     content: '';
     position: absolute;
